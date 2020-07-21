@@ -12,5 +12,24 @@ export const mstore = new Vuex.Store({
             { name: "马超", price: 20 }
 
         ]
+    },
+    getters: {
+        saleProducts: (state) => {
+            var saleProducts = state.products.map((product) => {
+                return {
+                    name: "##" + product.name,
+                    price: product.price / 2
+                };
+            })
+            return saleProducts;
+        }
+    },
+    mutations:{
+        reducePrice:(state)=>{
+            state.products.forEach((product)=>{
+                this.product.price -= 1;
+            })
+        }
     }
+
 })

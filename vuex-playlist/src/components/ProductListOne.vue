@@ -2,11 +2,12 @@
   <div id="product-list-one">
     <p>product-list-one</p>
     <ul>
-      <li v-for="product in products" :key="product">
+      <li v-for="product in saleProducts" :key="product">
         <span class="name">{{product.name}}</span>
         <span class="price">${{product.price}}</span>
       </li>
     </ul>
+    <button @click="reducePrice">商品降价</button>
   </div>
 </template>
 
@@ -15,7 +16,15 @@ export default {
   computed: {
     products() {
       return this.$store.state.products;
+    },
+    saleProducts() {
+      return this.$store.getters.saleProducts;
     }
+  },
+  methods:{
+      reducePrice:function(){
+          this.$store.commit('reducePrice');
+      }
   }
 };
 </script>
