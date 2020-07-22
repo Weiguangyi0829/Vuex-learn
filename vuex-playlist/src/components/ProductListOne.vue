@@ -23,7 +23,7 @@ export default {
   },
   methods:{
       reducePrice:function(){
-          this.$store.commit('reducePrice');
+          this.$store.commit('reducePrice');//store.js中的mutations方法名
       }
   }
 };
