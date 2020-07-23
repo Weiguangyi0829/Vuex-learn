@@ -7,26 +7,36 @@
         <span class="price">${{product.price}}</span>
       </li>
     </ul>
-    <button @click="reducePrice">商品降价</button>
+    <button @click="reducePrice(4)">商品降价</button>
   </div>
 </template>
 
 <script>
+
+import {mapGetters} from 'vuex';
+import {mapActions} from 'vuex';
 export default {
   computed: {
     products() {
       return this.$store.state.products;
     },
-    saleProducts() {
-      return this.$store.getters.saleProducts;
-    },
+    // saleProducts() {
+    //   return this.$store.getters.saleProducts;
+    // },
+    ...mapGetters([
+      "saleProducts"
+    ])
+    //运行需要安装cnpm i babel-preset-stage-2 --save-dev
   },
   methods: {
-    reducePrice: function (amount) {
-      this.$store.commit("reducePrice"); //store.js中的mutations方法名
-      this.$store.dispatch("reducePrice", amount); //dispatch触发action当中的方法
-    },
-  },
+    // reducePrice: function (amount) {
+    //   this.$store.commit("reducePrice"); //store.js中的mutations方法名
+    //   this.$store.dispatch("reducePrice", amount); //dispatch触发action当中的方法
+    // },
+    ...mapActions([
+      "reducePrice"
+    ])
+  }, 
 };
 </script>
 
