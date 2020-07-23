@@ -19,13 +19,14 @@ export default {
     },
     saleProducts() {
       return this.$store.getters.saleProducts;
-    }
+    },
   },
-  methods:{
-      reducePrice:function(){
-          this.$store.commit('reducePrice');//store.js中的mutations方法名
-      }
-  }
+  methods: {
+    reducePrice: function (amount) {
+      this.$store.commit("reducePrice"); //store.js中的mutations方法名
+      this.$store.dispatch("reducePrice", amount); //dispatch触发action当中的方法
+    },
+  },
 };
 </script>
 
